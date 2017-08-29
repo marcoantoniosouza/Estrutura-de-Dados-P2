@@ -1,8 +1,12 @@
-typedef struct{
-	char item;
-	struct node* tail;
-	struct node* next;
-}node;
+#include <stdlib.h>
+
+typedef struct _node node;
+
+struct _node{
+	int item;
+	node* tail;
+	node* next;
+};
 
 node* createList(){
 	return NULL;
@@ -24,7 +28,7 @@ node* clearList(node *head){
 	return NULL;
 }
 
-node* addToHead(node *head, char item){
+node* addToHead(node *head, int item){
 	node *newNode;
 	newNode = malloc(sizeof(node));
 	newNode->item = item;
@@ -34,7 +38,7 @@ node* addToHead(node *head, char item){
 	return newNode;
 }
 
-node* addToTail(node *head, char item){
+node* addToTail(node *head, int item){
 	node *newNode;
 	newNode = malloc(sizeof(node));
 	newNode->item = item;
@@ -54,7 +58,7 @@ node* removeByPointer(node *head, node *prev, node *current){
 	return head;
 }
 
-node* search(node *head, char item){
+node* search(node *head, int item){
 	while(head!=NULL){
 		if (head->item==item) return head;
 		else head = head->next;
@@ -79,9 +83,22 @@ node* invertList(node *head){
 void printList(node *head){
 	if (isEmpty(head)) printf("List Underflow");
 	else while (!isEmpty(head)){
-		printf("%c ", head->item);
+		printf("%d ", head->item);
 		head = head->next;
 	}
 	printf("\n");
 	return;
+}
+
+node* tailOfList(node *head){
+	if (isEmpty(head)) return NULL;
+	return head->tail;
+}
+
+node* removeFromHead(node *head){
+	node *aux = malloc(sizeof(node));
+	aux = head;
+	head = head->next;
+	free(aux);
+	return head;
 }
