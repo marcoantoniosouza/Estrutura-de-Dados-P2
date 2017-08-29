@@ -1,11 +1,13 @@
-typedef struct _stack stack_t;
+#include "stack.c"
 
-stack_t* newStack();
-int cap(stack_t *stack);
-int size(stack_t *stack);
-int peek(stack_t *stack);
-int isEmpty(stack_t *stack);
-int isFull(stack_t *stack);
-void pop(stack_t *stack);
-void destroy(stack_t *stack);
-void push(stack_t *stack, int value);
+typedef struct _stack stack;
+
+stack* createStack(); //
+int cap(stack *stack);
+int size(stack *stack); //
+int peek(stack *stack);
+int stackIsEmpty(stack *s); //
+int stackisFull(stack *stack); //
+void pop(stack *stack); //
+void destroy(stack *stack);
+void push(stack *stack, int value); //
