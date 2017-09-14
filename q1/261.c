@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-typedef struct{
+typedef struct _node node;
+
+struct _node{
 	int item;
-	struct node* next;
-}node;
+	node* next;
+};
 
 node* createList(){
 	return NULL;
